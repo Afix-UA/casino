@@ -470,7 +470,8 @@ body::after {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%)
+  transform: translate(-50%,-50%);
+  -webkit-tap-highlight-color: transparent
 }
 .circle__button img {
   transition: -webkit-transform .3s;
