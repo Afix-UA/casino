@@ -405,6 +405,7 @@ body::after {
   width: 100%
 }
 .copi-text {
+  text-align: center;
   max-width: 108.75rem;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
@@ -622,8 +623,9 @@ body::after {
   .advantages-popup__item {
     gap: .75rem
   }
-}
-@media (max-width:23.125em) {
+  .casino {
+    background: url(../img/bg-mob.webp) 0 0/cover no-repeat
+  }
   .casino__column--left {
     top: auto;
     width: 50.513514%;
@@ -633,8 +635,16 @@ body::after {
   .casino__column--right {
     width: 50.7737%;
     left: 1.891892%;
-    bottom: -36.623491%;
+    bottom: -26.623491%;
     z-index: 3
+  }
+}
+@media (max-width:29.99875em)and (orientation:portrait) {
+  .casino__column--left {
+    bottom: -20.623491%
+  }
+  .casino__column--right {
+    bottom: -30.623491%
   }
 }
 @media (min-width:20em)and (max-width:118.125em) {
@@ -652,11 +662,6 @@ body::after {
   .circle__button:hover img {
     -webkit-transform: scale(1.05);
     transform: scale(1.05)
-  }
-}
-@media (orientation:landscape) {
-  .casino__body {
-    min-height: 100vh
   }
 }
 @media (orientation:portrait) {
