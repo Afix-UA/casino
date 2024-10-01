@@ -325,7 +325,8 @@ body::after {
   object-fit: contain
 }
 .casino {
-  min-height: 100%;
+  min-height: 56.9375rem;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -555,6 +556,13 @@ body::after {
     left: 75.947917%
   }
 }
+@media (max-width:25em) {
+  .casino__column--left {
+    left: 59%;
+    top: 65%;
+    width: 63.513514%
+  }
+}
 @media (max-width:20em) {
   .casino__title {
     font-size: 1.625rem
@@ -565,22 +573,15 @@ body::after {
 }
 @media (max-width:61.99875em) {
   .casino__column--left {
-    bottom: -40.981481%;
-    left: 75.891892%;
-    width: 50.270833%
+    left: 74%;
+    top: 65%;
+    width: 43.513514%
   }
   .casino__column--right {
-    width: 30.270833%;
+    bottom: auto;
     left: 1.891892%;
-    bottom: -30.623491%
-  }
-}
-@media (max-width:61.99875em)and (orientation:landscape) {
-  .casino__column--left {
-    bottom: -60.981481%
-  }
-  .casino__column--right {
-    bottom: -50.623491%
+    width: 35.411765%;
+    top: 61%
   }
 }
 @media (max-width:47.99875em) {
@@ -592,6 +593,17 @@ body::after {
   }
   .casino__logo {
     aspect-ratio: 163/32
+  }
+  .casino__column--left {
+    left: 70%;
+    top: 80%;
+    width: 50.513514%
+  }
+  .casino__column--right {
+    bottom: auto;
+    left: -1.891892%;
+    width: 40.411765%;
+    top: 66%
   }
 }
 @media (max-width:29.99875em) {
@@ -627,24 +639,15 @@ body::after {
     background: url(../img/bg-mob.webp) 0 0/cover no-repeat
   }
   .casino__column--left {
-    top: auto;
-    width: 50.513514%;
-    left: 55.891892%;
-    bottom: -20.646542%
+    left: 59%;
+    top: 70%;
+    width: 63.513514%
   }
   .casino__column--right {
-    width: 50.7737%;
+    bottom: auto;
     left: 1.891892%;
-    bottom: -26.623491%;
-    z-index: 3
-  }
-}
-@media (max-width:29.99875em)and (orientation:portrait) {
-  .casino__column--left {
-    bottom: -20.623491%
-  }
-  .casino__column--right {
-    bottom: -30.623491%
+    width: 59.411765%;
+    top: 61%
   }
 }
 @media (min-width:20em)and (max-width:118.125em) {
@@ -662,10 +665,5 @@ body::after {
   .circle__button:hover img {
     -webkit-transform: scale(1.05);
     transform: scale(1.05)
-  }
-}
-@media (orientation:portrait) {
-  .casino__body {
-    min-height: 60vh
   }
 }
