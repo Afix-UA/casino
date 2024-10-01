@@ -6,7 +6,7 @@
   font-style: normal
 }
 @font-face {
-  font-family: proximanova_regular;
+  font-family: Proxima;
   font-display: swap;
   src: url(../fonts/proximanova_regular.woff2) format("woff2");
   font-weight: 400;
@@ -34,7 +34,7 @@ html {
 body {
   color: hsla(0,0%,100%,.5);
   line-height: 1;
-  font-family: proximanova;
+  font-family: Proxima;
   font-size: 1rem;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -45,7 +45,7 @@ body {
 button,
 input,
 textarea {
-  font-family: proximanova;
+  font-family: Proxima;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
