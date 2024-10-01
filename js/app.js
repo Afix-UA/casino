@@ -120,7 +120,8 @@
                 if (buttonOpen) {
                     buttonOpen.setAttribute("disabled", "true");
                     circle.classList.remove("rotate");
-                    circle.style.animation = "rotate-center 16s ease-in-out both";
+                    circle.classList.remove("spinner");
+                    circle.style.animation = "4s rotate-center ease-in-out forwards";
                     setTimeout((() => {
                         this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
                         this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
@@ -139,7 +140,7 @@
                             return;
                         } else this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
                         return;
-                    }), 16e3);
+                    }), 4e3);
                 }
                 const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
                 if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
