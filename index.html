@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20241001200727">
+	<link rel="stylesheet" href="css/style.min.css?_v=20241010174537">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
 						<img src="img/shadow.webp" alt="Shadow" class="circle__shadow">
 						<img data-circle src="img/circle.webp" alt="Circle" class="circle__loto spinner">
 						<img src="img/border.webp" alt="Border" class="circle__border">
-						<button data-popup="#popup" class="circle__button"> <img src="img/btn.webp" alt="Image"></button>
+						<button class="circle__button"> <img src="img/btn.webp" alt="Image"></button>
 					</div>
 				</div>
 				<div class="casino__column--right">
@@ -47,6 +47,47 @@
 
 
 	<div id="popup" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<div class="popup__text">
+					<h2 class="popup__title">
+						Тисни на<span>спробувати ще</span>
+					</h2>
+					<div class="popup__advantages advantages-popup">
+						<div class="advantages-popup__image-box">
+							<img src="img/popup-image.webp" class="advantages-popup__image advantages-popup__image--circle" alt="Image">
+							<img src="img/right.webp" class="advantages-popup__image advantages-popup__image--princes" alt="Image">
+							<img src="img/shadow.webp" class="advantages-popup__image advantages-popup__image--shadow" alt="Image">
+						</div>
+						<!-- <ul class="advantages-popup__list">
+						<li class="advantages-popup__item">Роби акаунт</li>
+						<li class="advantages-popup__item">Проходь верефікацію </li>
+						<li class="advantages-popup__item">Роби любий депозит</li>
+						<li class="advantages-popup__item">Починай грати</li>
+					</ul> -->
+
+					</div>
+					<!-- <div class="popup__info">
+					<p>Після виконання всіх кроків
+						ваш депозит автоматично повернеться на вашу карту.</p>
+					<p>Так, ви
+						правильно зрозуміли! Ваш
+						депозит буде повернений вам у
+						повному обсязі</p>
+				</div> -->
+					<div class="popup__action action-popup">
+						<button data-close href="#" target="_blank" class="action-popup__button closed">спробувати ще</button>
+						<p class="action-popup__text">Не упусти свій шанс
+							на безкоштовну гру!</p>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupTwo" aria-hidden="true" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
 				<button data-close type="button" class="popup__close">
@@ -79,7 +120,7 @@
 							повному обсязі</p>
 					</div>
 					<div class="popup__action action-popup">
-						<a href="#" target="_blank" class="action-popup__button">Отримати бонус</a>
+						<a href="https://worldwidegg.com/l/66dea3b4dda67468bd01ad03?sub_id={sub_id_1}&click_id={click_id}" target="_blank" class="action-popup__button">Отримати бонус</a>
 						<p class="action-popup__text">Не упусти свій шанс
 							на безкоштовну гру!</p>
 
@@ -88,9 +129,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-		<script src="js/app.min.js?_v=20241001200727"></script>
+	<script src="js/app.min.js?_v=20241010174537"></script>
 </body>
 
 </html>

@@ -116,58 +116,27 @@
         eventsPopup() {
             document.addEventListener("click", function(e) {
                 const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
-                const circle = document.querySelector("[data-circle]");
+                document.querySelector("[data-circle]");
                 if (buttonOpen) {
-                    buttonOpen.setAttribute("disabled", "true");
-                    circle.classList.remove("rotate");
-                    circle.classList.remove("spinner");
-                    circle.style.animation = "4s rotate-center ease-in-out forwards";
-                    setTimeout((() => {
-                        this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
-                        this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
-                        if (this._dataValue !== "error") {
-                            if (!this.isOpen) this.lastFocusEl = buttonOpen;
-                            this.targetOpen.selector = `${this._dataValue}`;
-                            this._selectorOpen = true;
-                            this.open();
-                            circle.addEventListener("animationend", (() => {
-                                circle.style.animation = "";
-                                circle.classList.add("rotate");
-                                buttonOpen.removeAttribute("disabled");
-                            }), {
-                                once: true
-                            });
-                            return;
-                        } else this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
+                    this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : null;
+                    this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
+                    if (this._dataValue) {
+                        if (!this.isOpen) this.lastFocusEl = buttonOpen;
+                        this.targetOpen.selector = `${this._dataValue}`;
+                        this._selectorOpen = true;
+                        this.open();
                         return;
-                    }), 4e3);
+                    }
+                    if (this._dataValue === null) console.log(`Атрибут не заданий у ${buttonOpen.classList}`);
+                    return;
                 }
                 const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
-                if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
+                if (buttonClose) {
                     e.preventDefault();
                     this.close();
                     return;
                 }
             }.bind(this));
-            document.addEventListener("keydown", function(e) {
-                if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
-                    e.preventDefault();
-                    this.close();
-                    return;
-                }
-                if (this.options.focusCatch && e.which == 9 && this.isOpen) {
-                    this._focusCatch(e);
-                    return;
-                }
-            }.bind(this));
-            if (this.options.hashSettings.goHash) {
-                window.addEventListener("hashchange", function() {
-                    if (window.location.hash) this._openToHash(); else this.close(this.targetOpen.selector);
-                }.bind(this));
-                window.addEventListener("load", function() {
-                    if (window.location.hash) this._openToHash();
-                }.bind(this));
-            }
         }
         open(selectorValue) {
             if (bodyLockStatus) {
@@ -307,5 +276,69 @@
             }));
         }
     }), 0);
+    function casino() {
+        const btn = document.querySelector(".circle__button");
+        const circle = document.querySelector(".circle__loto");
+        let numParts = 8;
+        let providedNum = 7;
+        let secondProvidedNum = 5;
+        const animationDuration = 4;
+        const animationDurationMs = animationDuration * 1e3;
+        const styleSheet = document.styleSheets[0];
+        let rotateStart = 0;
+        let callCounter = 0;
+        function applyAnimation(duration) {
+            circle.style.animation = `rotate-center ${duration}s forwards`;
+        }
+        function addSpinnerAnimation(startRotate = 0) {
+            const spinnerKeyframes = `\n        @keyframes spinner {\n          0% {\n            transform: rotate(${startRotate}deg);\n          }\n          25% {\n            transform: rotate(${startRotate + 2}deg);\n          }\n          75% {\n            transform: rotate(${startRotate - 2}deg);\n          }\n          100% {\n            transform: rotate(${startRotate}deg);\n          }\n        }\n    `;
+            styleSheet.insertRule(spinnerKeyframes, styleSheet.cssRules.length);
+            circle.style.animation = "spinner 3s linear infinite";
+        }
+        addSpinnerAnimation();
+        function addRotateAnimation(rotateStart, rotateEnd) {
+            const rotateKeyframes = `\n      @keyframes rotate-center {\n        0% {\n          transform: rotate(${rotateStart}deg);\n        }\n        50% {\n          transform: rotate(500deg);\n        }\n        100% {\n          transform: rotate(${rotateEnd}deg);\n        }\n      }\n    `;
+            styleSheet.insertRule(rotateKeyframes, styleSheet.cssRules.length);
+        }
+        function getRandomRotation(numParts, providedNum = null, secondProvidedNum = null) {
+            return function() {
+                let randomNum;
+                if (callCounter === 0 && providedNum !== null) {
+                    randomNum = providedNum;
+                    callCounter++;
+                } else if (callCounter === 1 && secondProvidedNum !== null) {
+                    randomNum = secondProvidedNum;
+                    callCounter++;
+                } else return;
+                const degreesPerPart = 360 / numParts;
+                const totalDegrees = randomNum * degreesPerPart;
+                return {
+                    number: randomNum,
+                    degrees: totalDegrees.toFixed(2)
+                };
+            };
+        }
+        function handleClick() {
+            btn.setAttribute("disabled", true);
+            const getRotation = getRandomRotation(numParts, providedNum, secondProvidedNum);
+            const result = getRotation();
+            if (result) {
+                addRotateAnimation(rotateStart, parseFloat(result.degrees));
+                rotateStart = parseFloat(result.degrees);
+                applyAnimation(animationDuration);
+                if (callCounter === 1) setTimeout((() => {
+                    btn.removeAttribute("disabled");
+                    modules_flsModules.popup.open("#popup");
+                    addSpinnerAnimation(rotateStart);
+                }), animationDurationMs); else if (callCounter === 2) setTimeout((() => {
+                    btn.removeAttribute("disabled");
+                    modules_flsModules.popup.open("#popupTwo");
+                    addSpinnerAnimation(rotateStart);
+                }), animationDurationMs);
+            }
+        }
+        btn.addEventListener("click", handleClick);
+    }
+    casino();
     window["FLS"] = true;
 })();

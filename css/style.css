@@ -199,6 +199,9 @@ body::after {
 .popup__info:not(:last-child) {
   margin-bottom: 1.5rem
 }
+.popup__close {
+  visibility: hidden
+}
 .advantages-popup {
   display: flex;
   gap: 2rem
@@ -211,6 +214,7 @@ body::after {
   flex: 1 1 auto
 }
 .advantages-popup__image {
+  pointer-events: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -447,15 +451,6 @@ body::after {
   -webkit-transform: rotate(0);
   transform: rotate(0)
 }
-.circle__loto.rotate {
-  transition: all 2s;
-  -webkit-transform: rotate(945deg);
-  transform: rotate(945deg)
-}
-.circle__loto.spinner {
-  -webkit-animation: 2s spinner ease-in-out infinite;
-  animation: 2s spinner ease-in-out infinite
-}
 .circle__border {
   position: absolute;
   width: 100%;
@@ -479,70 +474,6 @@ body::after {
   transition: transform .3s,-webkit-transform .3s;
   width: 100%;
   height: 100%
-}
-@-webkit-keyframes spinner {
-  0% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg)
-  }
-  50% {
-    -webkit-transform: rotate(-2deg);
-    transform: rotate(-2deg)
-  }
-  100% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg)
-  }
-}
-@keyframes spinner {
-  0% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg)
-  }
-  50% {
-    -webkit-transform: rotate(-2deg);
-    transform: rotate(-2deg)
-  }
-  100% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg)
-  }
-}
-@-webkit-keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
-  70% {
-    -webkit-transform: rotate(948deg);
-    transform: rotate(948deg)
-  }
-  80% {
-    -webkit-transform: rotate(942deg);
-    transform: rotate(942deg)
-  }
-  100% {
-    -webkit-transform: rotate(945deg);
-    transform: rotate(945deg)
-  }
-}
-@keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
-  70% {
-    -webkit-transform: rotate(948deg);
-    transform: rotate(948deg)
-  }
-  80% {
-    -webkit-transform: rotate(942deg);
-    transform: rotate(942deg)
-  }
-  100% {
-    -webkit-transform: rotate(945deg);
-    transform: rotate(945deg)
-  }
 }
 @media (min-width:118.125em) {
   .casino__title {
@@ -661,6 +592,7 @@ body::after {
 }
 @media (any-hover:hover) {
   .action-popup__button:hover {
+    color: #fff;
     background-color: #d53c00
   }
   .circle__button:hover img {
