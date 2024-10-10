@@ -282,7 +282,7 @@
         let numParts = 8;
         let providedNum = 7;
         let secondProvidedNum = 5;
-        const animationDuration = 4;
+        const animationDuration = 6;
         const animationDurationMs = animationDuration * 1e3;
         const styleSheet = document.styleSheets[0];
         let rotateStart = 0;
@@ -297,7 +297,7 @@
         }
         addSpinnerAnimation();
         function addRotateAnimation(rotateStart, rotateEnd) {
-            const rotateKeyframes = `\n      @keyframes rotate-center {\n        0% {\n          transform: rotate(${rotateStart}deg);\n        }\n        50% {\n          transform: rotate(500deg);\n        }\n        100% {\n          transform: rotate(${rotateEnd}deg);\n        }\n      }\n    `;
+            const rotateKeyframes = `\n      @keyframes rotate-center {\n        0% {\n          transform: rotate(${rotateStart}deg);\n        }\n        50% {\n          transform: rotate(800deg);\n        }\n        100% {\n          transform: rotate(${rotateEnd}deg);\n        }\n      }\n    `;
             styleSheet.insertRule(rotateKeyframes, styleSheet.cssRules.length);
         }
         function getRandomRotation(numParts, providedNum = null, secondProvidedNum = null) {
